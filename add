@@ -14,9 +14,9 @@ echo "server {
     }
 }" >> $port".conf"
 
-ln -s "/MultiProxy/"$port".conf /etc/nginx/sites-enabled/"$port".conf"
+ln -s "/MultiProxy/"$port".conf" "/etc/nginx/sites-enabled/"$port".conf"
 
-ln -s "/MultiProxy/"$port".conf /etc/nginx/sites-available/"$port".conf"
+ln -s "/MultiProxy/"$port".conf" "/etc/nginx/sites-available/"$port".conf"
 
 /usr/sbin/nginx -s reload
 
