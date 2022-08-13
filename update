@@ -10,7 +10,7 @@ repo="https://github.com/ItsMeSudo/MultiProxy.git"
 
 createbackup() {
     cd / && \
-    tar -czvf "MultiProxyBK-"$date".tar.gz "$dir 
+    tar -czvf "MultiProxyBK-"$date".tar.gz" $dir 
 }
 
 runupdate() {
