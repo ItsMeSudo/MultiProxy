@@ -1,0 +1,16 @@
+#!/bin/bash
+#MultiProxy
+#SUDO                 2022              SERVERHU.EU
+
+port=$1
+dir="/MultiProxy"
+
+unlink "/etc/nginx/sites-enabled/"$port".conf"
+
+unlink "/etc/nginx/sites-available/"$port".conf"
+
+rm $dir"/"$port".conf"
+
+/usr/sbin/nginx -s reload
+
+echo "True"

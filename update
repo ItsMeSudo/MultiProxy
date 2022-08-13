@@ -1,0 +1,45 @@
+#!/bin/bash
+#MultiProxy
+#SUDO                 2022              SERVERHU.EU
+
+date=$(date '+%Y-%m-%d')
+dir="/MultiProxy"
+modulesneed="git"
+tempdir="/tmp/sudo"
+repo="https://github.com/ItsMeSudo/MultiProxy.git"
+
+createbackup() {
+    cd / && \
+    tar -czvf "MultiProxyBK-"$date".tar.gz "$dir 
+}
+
+runupdate() {
+    apt install $modulesneed -y
+}
+
+removeprev() {
+    rm -rf $dir && \
+    rm -rf $tempdir
+}
+
+createdir() {
+    mkdir $dir
+}
+
+clonecontent() {
+    mkdir -p $tempdir && \
+    cd $tempdir && \
+    git clone $repo && \
+    mv $tempdir/MultiProxy/* $dir && \
+    chmod +x $dir/*
+}
+
+main() {
+    createbackup
+    runupdate
+    removeprev
+    createdir
+    clonecontent
+    echo "True"
+}
+main

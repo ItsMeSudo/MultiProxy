@@ -1,0 +1,23 @@
+#!/bin/bash
+#MultiProxy
+#SUDO                 2022              SERVERHU.EU
+
+port=$1
+domain=$2
+
+echo "server {
+	listen 80;
+	server_name "$domain";
+	location / {
+		proxy_pass http://127.0.0.1:"$port";
+        include /MultiProxy/multi-default.conf;
+    }
+}" >> $port".conf"
+
+ln -s "/MultiProxy/"$port".conf /etc/nginx/sites-enabled/"$port".conf"
+
+ln -s "/MultiProxy/"$port".conf /etc/nginx/sites-available/"$port".conf"
+
+/usr/sbin/nginx -s reload
+
+echo "True"
